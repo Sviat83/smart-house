@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Розумний дім</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Розумний дім</h1>
+
+    <!-- Блоки зон -->
+    <div class="zones-container">
+        <div class="zone" id="zone-1">
+            <h2>Кімната</h2>
+            <p>Світло: <span id="zone-1-light">Off</span></p>
+            <p>Температура: <span id="zone-1-temperature">0°C</span></p>
+            <p>Вікно: <span id="zone-1-window">Closed</span></p>
+            <p>Телевізор: <span id="zone-1-tv">Off</span></p>
+        </div>
+        <div class="zone" id="zone-2">
+            <h2>Кухня</h2>
+            <p>Світло: <span id="zone-2-light">Off</span></p>
+            <p>Температура: <span id="zone-2-temperature">0°C</span></p>
+            <p>Вікно: <span id="zone-2-window">Closed</span></p>
+        </div>
+        <div class="zone" id="zone-3">
+            <h2>Коридор</h2>
+            <p>Світло: <span id="zone-3-light">Off</span></p>
+            <p>Температура: <span id="zone-3-temperature">0°C</span></p>
+        </div>
+        <div class="zone" id="zone-4">
+            <h2>Ванна</h2>
+            <p>Світло: <span id="zone-4-light">Off</span></p>
+            <p>Температура: <span id="zone-4-temperature">0°C</span></p>
+        </div>
+    </div>
+
+    <!-- Блок управління -->
+     <div> <h1>Управління</h1> </div>
+
+    <div class="controls-container">
+        
+        
+        <!-- Управління світлом -->
+        <div class="control-section">
+            <h3>Світло</h3>
+            <div class="control-group">
+                <span>On:</span>
+                <button id="zone-1-light-on">On</button>
+                <button id="zone-2-light-on">On</button>
+                <button id="zone-3-light-on">On</button>
+                <button id="zone-4-light-on">On</button>
+                <span>Off:</span>
+                <button id="zone-1-light-off">Off</button>
+                <button id="zone-2-light-off">Off</button>
+                <button id="zone-3-light-off">Off</button>
+                <button id="zone-4-light-off">Off</button>
+            </div>
+        </div>
+
+        <!-- Управління вікнами -->
+        <div class="control-section">
+            <h3>Вікна</h3>
+            <div class="control-group">
+                <span>Open:</span>
+                <button id="zone-1-window-open">Open</button>
+                <button id="zone-2-window-open">Open</button>
+                <span>Closed:</span>
+                <button id="zone-1-window-close">Closed</button>
+                <button id="zone-2-window-close">Closed</button>
+            </div>
+        </div>
+
+        <!-- Управління телевізором -->
+        <div class="control-section">
+            <h3>Телевізор (Кімната)</h3>
+            <div class="control-group">
+                <span>On:</span>
+                <button id="zone-1-tv-on">On</button>
+                <span>Off:</span>
+                <button id="zone-1-tv-off">Off</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Підключення JS -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #757070; /* Біле тло сторінки */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 15px; /* Зменшуємо відступ */
+    color: #2c3e50;
+    font-size: 24px;
+    width: 100%; /* Заголовок на всю ширину */
+}
+
+.zones-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 стовпці */
+    gap: 20px; /* Більший відступ між зонами */
+    margin-bottom: 20px; /* Зменшуємо відступ перед блоком управління */
+    width: 100%; /* Зони на всю ширину сторінки */
+}
+
+.zone {
+    background-color: #f9f9f9; /* Світло-сіре тло */
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #d1d1d1; /* Світла рамка */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    min-height: 150px; /* Однакова висота для всіх зон */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.zone h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.zone p {
+    font-size: 18px;
+    margin: 8px 0;
+    color: #555;
+}
+
+.zone p span {
+    font-weight: bold;
+}
+
+.zone p span.yellow-state {
+    color: #ffcc00; /* Жовтий колір для "Увімкнено" і "Відкрито" */
+}
+
+.zone p span.red-state {
+    color: #ff0000; /* Червоний колір для "Вимкнено" і "Закрито" */
+}
+
+.controls-container {
+    width: 100%; /* Блок управління на всю ширину сторінки */
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 5px;
+    border: 1px solid #d1d1d1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    display: flex; /* Розташовуємо секції в рядок */
+    justify-content: space-between; /* Рівномірний розподіл */
+    gap: 20px; /* Відступ між секціями */
+}
+
+.control-section {
+    flex: 1; /* Кожна секція займає рівну частину */
+    margin-bottom: 0; /* Прибираємо нижній відступ */
+    padding-bottom: 0; /* Прибираємо нижній відступ */
+    border-bottom: none; /* Прибираємо розділювач */
+    text-align: center; /* Центруємо вміст */
+}
+
+.control-section:last-child {
+    border-bottom: none; /* Уже прибрано вище */
+}
+
+.control-section h3 {
+    font-size: 18px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: row; /* Кнопки в рядок */
+    flex-wrap: wrap; /* Дозволяємо перенос на малих екранах */
+    align-items: center; /* Центруємо по вертикалі */
+    gap: 20px; /* Відступ між кнопками */
+    margin-bottom: 10px;
+    justify-content: center; /* Центруємо кнопки в секції */
+}
+
+.control-group span {
+    font-size: 16px;
+    color: #555;
+    margin-right: 10px; /* Відступ праворуч від напису */
+}
+
+button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.7s;
+    width: 100px; /* Фіксована ширина для однакового розміру */
+    text-align: center;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:active {
+    opacity: 0.7;
+}
+
+#zone-1-light-on, #zone-2-light-on, #zone-3-light-on, #zone-4-light-on,
+#zone-1-window-open, #zone-2-window-open, #zone-1-tv-on {
+    background-color: #2ecc71; /* Зелений для "On"/"Open" */
+}
+
+#zone-1-light-off, #zone-2-light-off, #zone-3-light-off, #zone-4-light-off,
+#zone-1-window-close, #zone-2-window-close, #zone-1-tv-off {
+    background-color: #3498db; /* Синій для "Off"/"Closed" */
+}
