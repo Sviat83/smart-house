@@ -1,7 +1,8 @@
 import { updateSensor, getZones } from './zones.js';
 import { updateUI } from './ui.js';
 
-// Налаштування обробки подій для кнопок
+let logActions = [];
+
 export function setupControls(zones) {
     // Управління світлом
     zones.forEach(zone => {
@@ -11,19 +12,21 @@ export function setupControls(zones) {
         if (lightOnButton && lightOffButton) {
             lightOnButton.addEventListener('click', () => {
                 updateSensor(zone.id, 'light', 'on');
-                updateUI(getZones(), { updateColor: true });
+                logActions.push(`${new Date().toLocaleTimeString()} Увімкнено Світло у ${zone.name}`);
+                updateUI(getZones(), { updateColor: true, logActions: [...logActions] });
             });
 
             lightOffButton.addEventListener('click', () => {
                 updateSensor(zone.id, 'light', 'off');
-                updateUI(getZones(), { updateColor: true });
+                logActions.push(`${new Date().toLocaleTimeString()} Вимкнено Світло у ${zone.name}`);
+                updateUI(getZones(), { updateColor: true, logActions: [...logActions] });
             });
         } else {
             console.log(`Light buttons for ${zone.id} not found`);
         }
     });
 
-    // Управління вікнами (зони 1 і 2)
+    // Управління вікнами
     const windowZones = zones.filter(zone => zone.sensors.window !== undefined);
     windowZones.forEach(zone => {
         const windowOnButton = document.getElementById(`${zone.id}-window-open`);
@@ -32,37 +35,41 @@ export function setupControls(zones) {
         if (windowOnButton && windowOffButton) {
             windowOnButton.addEventListener('click', () => {
                 updateSensor(zone.id, 'window', 'open');
-                updateUI(getZones(), { updateColor: true });
+                logActions.push(`${new Date().toLocaleTimeString()} Відкрито Вікно у ${zone.name}`);
+                updateUI(getZones(), { updateColor: true, logActions: [...logActions] });
             });
 
             windowOffButton.addEventListener('click', () => {
                 updateSensor(zone.id, 'window', 'closed');
-                updateUI(getZones(), { updateColor: true });
+                logActions.push(`${new Date().toLocaleTimeString()} Закрито Вікно у ${zone.name}`);
+                updateUI(getZones(), { updateColor: true, logActions: [...logActions] });
             });
         } else {
             console.log(`Window buttons for ${zone.id} not found`);
         }
     });
 
-    // Управління телевізором (лише зона 1)
-    const tvZone = zones.find(zone => zone.id === 'zone-1');
-    const tvOnButton = document.getElementById('zone-1-tv-on');
-    const tvOffButton = document.getElementById('zone-1-tv-off');
+    // Управління телевізором
+    const tvZone = zones.find(zone => zone.id === "zone-1");
+    const tvOnButton = document.getElementById("zone-1-tv-on");
+    const tvOffButton = document.getElementById("zone-1-tv-off");
 
     if (tvOnButton && tvOffButton) {
-        console.log('TV buttons for zone-1 found and initialized');
-        tvOnButton.addEventListener('click', () => {
-            console.log('TV On button clicked for zone-1');
-            updateSensor('zone-1', 'tv', 'on');
-            updateUI(getZones(), { updateColor: true });
+        console.log("TV buttons for zone-1 found and initialized");
+        tvOnButton.addEventListener("click", () => {
+            console.log("TV On button clicked for zone-1");
+            updateSensor("zone-1", "tv", "on");
+            logActions.push(`${new Date().toLocaleTimeString()} Увімкнено Телевізор у ${tvZone.name}`);
+            updateUI(getZones(), { updateColor: true, logActions: [...logActions] });
         });
 
-        tvOffButton.addEventListener('click', () => {
-            console.log('TV Off button clicked for zone-1');
-            updateSensor('zone-1', 'tv', 'off');
-            updateUI(getZones(), { updateColor: true });
+        tvOffButton.addEventListener("click", () => {
+            console.log("TV Off button clicked for zone-1");
+            updateSensor("zone-1", "tv", "off");
+            logActions.push(`${new Date().toLocaleTimeString()} Вимкнено Телевізор у ${tvZone.name}`);
+            updateUI(getZones(), { updateColor: true, logActions: [...logActions] });
         });
     } else {
-        console.log('TV buttons for zone-1-tv-on or zone-1-tv-off not found');
+        console.log("TV buttons for zone-1-tv-on or zone-1-tv-off not found");
     }
 }

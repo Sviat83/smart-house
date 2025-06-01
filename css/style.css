@@ -7,7 +7,7 @@
 body {
     font-family: Arial, sans-serif;
     padding: 20px;
-    background-color: #757070; /* Біле тло сторінки */
+    background-color: #757070;
     color: #333;
     display: flex;
     flex-direction: column;
@@ -17,27 +17,27 @@ body {
 
 h1 {
     text-align: center;
-    margin-bottom: 15px; /* Зменшуємо відступ */
+    margin-bottom: 15px;
     color: #2c3e50;
     font-size: 24px;
-    width: 100%; /* Заголовок на всю ширину */
+    width: 100%;
 }
 
 .zones-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 стовпці */
-    gap: 20px; /* Більший відступ між зонами */
-    margin-bottom: 20px; /* Зменшуємо відступ перед блоком управління */
-    width: 100%; /* Зони на всю ширину сторінки */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+    width: 100%;
 }
 
 .zone {
-    background-color: #f9f9f9; /* Світло-сіре тло */
+    background-color: #e2c4c4;
     padding: 15px;
     border-radius: 5px;
-    border: 1px solid #d1d1d1; /* Світла рамка */
+    border: 1px solid #d1d1d1;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    min-height: 150px; /* Однакова висота для всіх зон */
+    min-height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -60,36 +60,46 @@ h1 {
     font-weight: bold;
 }
 
-.zone p span.yellow-state {
-    color: #ffcc00; /* Жовтий колір для "Увімкнено" і "Відкрито" */
+.yellow-state {
+    color: #08e80f !important; /* Зелений для "On"/"Open" */
 }
 
-.zone p span.red-state {
-    color: #ff0000; /* Червоний колір для "Вимкнено" і "Закрито" */
+.red-state {
+    color: #ff0000 !important; /* Червоний для "Off"/"Closed" */
+}
+
+.temperature-state {
+    color: #e8ac06 !important; /* Насичений жовтий для температури */
+}
+
+.controls-header {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 .controls-container {
-    width: 100%; /* Блок управління на всю ширину сторінки */
-    background-color: #f9f9f9;
+    width: 100%;
+    background-color: #edd0d0;
     padding: 30px;
     border-radius: 5px;
     border: 1px solid #d1d1d1;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    display: flex; /* Розташовуємо секції в рядок */
-    justify-content: space-between; /* Рівномірний розподіл */
-    gap: 120px; /* Відступ між секціями */
+    display: flex;
+    justify-content: space-between;
+    gap: 120px;
 }
 
 .control-section {
-    flex: 1; /* Кожна секція займає рівну частину */
-    margin-bottom: 0; /* Прибираємо нижній відступ */
-    padding-bottom: 0; /* Прибираємо нижній відступ */
-    border-bottom: none; /* Прибираємо розділювач */
-    text-align: center; /* Центруємо вміст */
+    flex: 1;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+    text-align: center;
 }
 
 .control-section:last-child {
-    border-bottom: none; /* Уже прибрано вище */
+    border-bottom: none;
 }
 
 .control-section h3 {
@@ -101,18 +111,18 @@ h1 {
 
 .control-group {
     display: flex;
-    flex-direction: row; /* Кнопки в рядок */
-    flex-wrap: wrap; /* Дозволяємо перенос на малих екранах */
-    align-items: center; /* Центруємо по вертикалі */
-    gap: 20px; /* Відступ між кнопками */
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
     margin-bottom: 10px;
-    justify-content: center; /* Центруємо кнопки в секції */
+    justify-content: center;
 }
 
 .control-group span {
     font-size: 16px;
-    color: #555; 
-    margin-right: 10px; /* Відступ праворуч від напису */
+    color: #555;
+    margin-right: 10px;
 }
 
 button {
@@ -123,7 +133,7 @@ button {
     color: white;
     cursor: pointer;
     transition: background-color 0.7s;
-    width: 100px; /* Фіксована ширина для однакового розміру */
+    width: 100px;
     text-align: center;
 }
 
@@ -137,10 +147,53 @@ button:active {
 
 #zone-1-light-on, #zone-2-light-on, #zone-3-light-on, #zone-4-light-on,
 #zone-1-window-open, #zone-2-window-open, #zone-1-tv-on {
-    background-color: #2ecc71; /* Зелений для "On"/"Open" */
+    background-color: #2ecc71;
 }
 
 #zone-1-light-off, #zone-2-light-off, #zone-3-light-off, #zone-4-light-off,
 #zone-1-window-close, #zone-2-window-close, #zone-1-tv-off {
-    background-color: #3498db; /* Синій для "Off"/"Closed" */
+    background-color: #3498db;
+}
+
+.log-container {
+    width: 100%;
+    background-color: #f9d7d7;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #d1d1d1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+}
+
+.log-container h2 {
+    font-size: 20px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.log-content {
+    max-height: 150px;
+    overflow-y: auto;
+    font-size: 16px;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .zones-container {
+        grid-template-columns: 1fr;
+    }
+
+    .controls-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .control-section {
+        margin-bottom: 20px;
+    }
+
+    .log-container {
+        margin-top: 10px;
+    }
 }

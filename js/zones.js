@@ -5,7 +5,8 @@ let zonesData = [
         sensors: {
             light: "off",
             temperature: 0,
-            window: "closed"
+            window: "closed",
+            tv: "off" // Додано сенсор tv для zone-1
         }
     },
     {
@@ -57,11 +58,15 @@ export function initializeZones() {
 export function updateSensor(zoneId, sensor, value) {
     const zone = zonesData.find(z => z.id === zoneId);
     if (zone && zone.sensors[sensor] !== undefined) {
+        console.log(`Updating ${sensor} for ${zoneId} to ${value}`);
         zone.sensors[sensor] = value;
+        console.log('Updated zonesData:', zonesData);
+    } else {
+        console.log(`Failed to update: Zone ${zoneId} or sensor ${sensor} not found`);
     }
 }
 
 // Функція для отримання поточного стану зон
 export function getZones() {
-    return zonesData;
+    return [...zonesData];
 }
