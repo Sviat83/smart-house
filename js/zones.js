@@ -38,9 +38,9 @@ let zonesData = [
 
 // Функція для генерації випадкової температури
 function generateTemperature() {
-    const minTemp = 15;
-    const maxTemp = 30;
-    const baseTemp = Math.random() * (maxTemp - minTemp) + minTemp; // 15–30°C
+    const minTemp = 20;
+    const maxTemp = 25;
+    const baseTemp = Math.random() * (maxTemp - minTemp) + minTemp; // 20–25°C
     const deviation = (Math.random() * 4) - 2; // Похибка ±2°C
     return Math.round((baseTemp + deviation) * 10) / 10; // Округлення до 1 знака
 }
